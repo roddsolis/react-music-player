@@ -1,0 +1,74 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.musicPlayerWrapper{
+    border: 1px solid gainsboro;
+    height:500px;
+    width: 700px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+
+}
+
+.musicPlayerControlsWrapper{
+    height: 72px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1em;
+    border: 1px solid gainsboro;
+}
+
+.musicPlayerListWrapper{
+    border: 1px solid gainsboro;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    background-color: pink;
+    padding: 1em 0em 1em 1em;
+    
+}
+/* esta clase maneja el contenido con scroll */
+.musicPlayerListScroll{
+    width: 100%;
+    /* background-color: coral; */
+}
+
+ul{
+    list-style: none;
+
+    & li{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1em;
+        /* background-color: cadetblue; */
+
+    }
+
+    & p{
+        gap: 1em;
+    }
+}
+
+audio{
+    scale: 80%;
+}

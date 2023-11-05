@@ -1,49 +1,84 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+    text-rendering: geometricPrecision;
+    shape-rendering: geometricPrecision;
+  }
+  
+  :root {
+    --colors-background: #050505;
+    --colors-background-body: #0a0a0a;
+    --colors-container-background: #0f0f0f;
+    --colors-text-gray-1: #afafaf;
+    --colors-text-gray-2: #b4b4b4;
+    --colors-text-gray-3: #6d6d6d;
+  
+    --color-border-gray: #131313;
+  
+  
+  
+    --bg-grad-color2:rgb(20, 20, 20);
+    --bg-grad-color1:rgb(12, 12, 12);
+    --background-gradient: linear-gradient(0deg, var(--colors-background)75%, var(--bg-grad-color1)100%) ;
+  
+  }
+
 
 body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    background-color: var(--colors-background-body);
+    font-family: "Inter Tight", sans-serif;
+    
 }
 
+#root {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    height: 100vh;
+    padding: 8em;
+  }
+
 .musicPlayerWrapper{
-    border: 1px solid gainsboro;
-    height:500px;
-    width: 700px;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1em;
+    grid-column: 1 / 13;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--colors-background);
+  border-radius: 1em;
+  border: 1px solid var(--color-border-gray);
+  color: var(--colors-text-gray-1);
+  overflow: hidden;
+  box-shadow: 0px 10px 30px -8px rgb(0, 0, 0);
+  background: var(--background-gradient);
+    
 
 }
 
 .musicPlayerControlsWrapper{
-    height: 72px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:1em;
-    border: 1px solid gainsboro;
+    background-color: var(--colors-container-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 98px;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 0.6em;
+  box-shadow: inset 0px 0px 0px 1px #181818;
+  gap: 1em;
 }
 
 .musicPlayerListWrapper{
-    border: 1px solid gainsboro;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     overflow-y: scroll;
     height: 100%;
-    width: 100%;
-    background-color: pink;
+    border-radius:0.5em;
+    backdrop-filter: blur(5px) brightness(2);
     padding: 1em 0em 1em 1em;
+    margin: 0.5em;
+   
     
 }
 /* esta clase maneja el contenido con scroll */
@@ -52,16 +87,33 @@ body{
     /* background-color: coral; */
 }
 
+.itemInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
 ul{
     list-style: none;
 
     & li{
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between;
         gap: 1em;
         /* background-color: cadetblue; */
+        padding: 1em;
 
+        
+        
+    }
+
+    & li:last-child{
+      padding-bottom: 0em;
+    }
+    & li:first-child{
+      padding-top: 0em;
     }
 
     & p{
@@ -69,6 +121,28 @@ ul{
     }
 }
 
-audio{
-    scale: 80%;
+::-webkit-scrollbar-thumb {
+    background: var(--color-border-gray);
+    border-radius: 100px;
+    box-shadow: 0px 2px 5px -1px black, inset 0px 0px 0px 1px #181818;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 12px;
+    background: var(--colors-background);
+  }
+  
+
+button{
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.5em;
+  background-color: var(--colors-background-body);
+  color: white;
+  border: 1px solid var(--color-border-gray);
+
 }

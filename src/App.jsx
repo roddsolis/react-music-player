@@ -7,7 +7,9 @@ const App = () => {
   const [musicList, setMusicList] = useState([]);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFirstPlay, setIsFirstPlay] = useState(true); // Nuevo estado
+  const [isFirstPlay, setIsFirstPlay] = useState(true);
+  const [currentPlayingIndex, setCurrentPlayingIndex] = useState(null);
+
 
   useEffect(() => {
     fetch("https://playground.4geeks.com/apis/fake/sound/songs")
@@ -23,8 +25,10 @@ const App = () => {
     audioRef.current.src = songUrl;
     audioRef.current.play();
     setCurrentSongIndex(index);
+    setCurrentPlayingIndex(index); // Actualiza el índice de la canción que está sonando
     setIsPlaying(true);
   };
+  
 
   const togglePlay = () => {
     if (isFirstPlay) {
@@ -73,17 +77,17 @@ const App = () => {
         </div>
         <div className="musicPlayerListWrapper">
           <div className="musicPlayerListScroll">
-            <ul>
-              {musicList?.map((item) => (
-                <li key={item.id}>
-                  <div className="itemInfo">
-                    <p>{item.id}</p>
-                    <p>{item.name}</p>
-                  </div>
-                  <audio ref={audioRef}></audio>
+          <ul>
+              {musicList?.map((item, index) => (
+                <li key={item.id} className={index === currentPlayingIndex ? 'playing' : ''}>
+                <div className="itemInfo">
+                  <p>{item.id}</p>
+                  <p>{item.name}</p>
+                </div>
+                <audio ref={audioRef}></audio>
                 </li>
-              ))}
-            </ul>
+                ))}
+          </ul>
           </div>
         </div>
       </div>
